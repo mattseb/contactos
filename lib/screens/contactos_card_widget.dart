@@ -20,12 +20,9 @@ class ContactosCardWidget extends StatelessWidget {
     return Container(
       color: _lightColors[index % _lightColors.length],
       child: ListTile(
-        title: Text(
-            contacto.nombres +
-                " " +
-                contacto.apellidos +
-                " " +
-                contacto.parentesco,
+        leading: Icon(Icons.person),
+        trailing: Text(contacto.parentesco),
+        title: Text(contacto.nombres + " " + contacto.apellidos,
             style: TextStyle(color: Colors.white)),
         subtitle: Text(
           "Telefono: " + contacto.telefono + " * email: " + contacto.correo,

@@ -55,7 +55,7 @@ class _ContactosPageState extends State<ContactosPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
-        child: Icon(Icons.person),
+        child: Icon(Icons.person_add),
         onPressed: () async {
           await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => AddEditContactos()),
