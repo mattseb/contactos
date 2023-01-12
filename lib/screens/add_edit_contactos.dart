@@ -18,9 +18,10 @@ class _AddEditContactosState extends State<AddEditContactos> {
   final _formKey = GlobalKey<FormState>();
   late String nombres;
   late String apellidos;
-  late String parentesco;
+  late String? parentesco = "Seleciona Valor";
   late String correo;
   late String telefono;
+  late String direccion;
 
   @override
   void initState() {
@@ -28,9 +29,10 @@ class _AddEditContactosState extends State<AddEditContactos> {
 
     nombres = widget.contacto?.nombres ?? "";
     apellidos = widget.contacto?.apellidos ?? "";
-    parentesco = widget.contacto?.parentesco ?? "";
+    // parentesco = widget.contacto?.parentesco ?? "";
     correo = widget.contacto?.correo ?? "";
     telefono = widget.contacto?.telefono ?? "";
+    direccion = widget.contacto?.direccion ?? "";
   }
 
   @override
@@ -43,9 +45,10 @@ class _AddEditContactosState extends State<AddEditContactos> {
           child: ContactosFormWidget(
             nombres: nombres,
             apellidos: apellidos,
-            parentesco: parentesco,
+            parentesco: parentesco!,
             correo: correo,
             telefono: telefono,
+            direccion: direccion,
             onChangedNombres: (nombres) =>
                 setState(() => this.nombres = nombres),
             onChangedApellidos: (apellidos) =>
@@ -55,16 +58,23 @@ class _AddEditContactosState extends State<AddEditContactos> {
             onChangedCorreo: (correo) => setState(() => this.correo = correo),
             onChangedTelefono: (telefono) =>
                 setState(() => this.telefono = telefono),
+            onChangedDireccion: (direccion) =>
+                setState(() => this.direccion = direccion),
           ),
         ),
       );
 
+  // void Function(String?) onChangedParentescoWithNull = (String? parentesco) {
+  //   setState(() => this.parentesco = parentesco ?? "");
+  // };
+
   Widget buildButton() {
     final isFormValid = nombres.isNotEmpty &&
         apellidos.isNotEmpty &&
-        parentesco.isNotEmpty &&
+        parentesco!.isNotEmpty &&
         correo.isNotEmpty &&
-        telefono.isNotEmpty;
+        telefono.isNotEmpty &&
+        direccion.isNotEmpty;
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -98,6 +108,7 @@ class _AddEditContactosState extends State<AddEditContactos> {
       parentesco: parentesco,
       correo: correo,
       telefono: telefono,
+      direcccion: direccion,
     );
 
     await ContactosDatabase.instance.update(note);
@@ -105,12 +116,12 @@ class _AddEditContactosState extends State<AddEditContactos> {
 
   Future addContactos() async {
     final contacto = Contactos(
-      nombres: nombres,
-      apellidos: apellidos,
-      parentesco: parentesco,
-      correo: correo,
-      telefono: telefono,
-    );
+        nombres: nombres,
+        apellidos: apellidos,
+        parentesco: parentesco!,
+        correo: correo,
+        telefono: telefono,
+        direccion: direccion);
 
     await ContactosDatabase.instance.create(contacto);
   }

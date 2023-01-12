@@ -6,24 +6,28 @@ class ContactosFormWidget extends StatelessWidget {
   final String parentesco;
   final String correo;
   final String telefono;
+  final String direccion;
   final ValueChanged<String> onChangedNombres;
   final ValueChanged<String> onChangedApellidos;
-  final ValueChanged<String> onChangedParentesco;
+  final ValueChanged<String?>? onChangedParentesco;
   final ValueChanged<String> onChangedCorreo;
   final ValueChanged<String> onChangedTelefono;
+  final ValueChanged<String> onChangedDireccion;
 
   const ContactosFormWidget(
       {Key? key,
       this.nombres = '',
       this.apellidos = '',
-      this.parentesco = '',
+      this.parentesco = 'Seleccione Valor',
       this.correo = '',
       this.telefono = '',
+      this.direccion = '',
       required this.onChangedNombres,
       required this.onChangedApellidos,
       required this.onChangedParentesco,
       required this.onChangedCorreo,
-      required this.onChangedTelefono})
+      required this.onChangedTelefono,
+      required this.onChangedDireccion})
       : super(key: key);
 
   @override
@@ -42,6 +46,8 @@ class ContactosFormWidget extends StatelessWidget {
               buildCorreo(),
               SizedBox(height: 8),
               buildTelefono(),
+              SizedBox(height: 8),
+              buildDireccion(),
               SizedBox(height: 16),
             ],
           ),
@@ -86,25 +92,29 @@ class ContactosFormWidget extends StatelessWidget {
         onChanged: onChangedApellidos,
       );
 
-  Widget buildParentesco() => TextFormField(
-        maxLines: 1,
-        initialValue: parentesco,
-        style: TextStyle(
-          color: Colors.white70,
-          fontWeight: FontWeight.bold,
-          fontSize: 24,
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: 'Ingrese su parentesco',
-          hintStyle: TextStyle(color: Colors.white70),
-        ),
-        validator: (parentesco) => parentesco != null && parentesco.isEmpty
-            ? 'El parentesco no debe estar vacio'
-            : null,
+  Widget buildParentesco() => DropdownButtonFormField<String>(
+        decoration: InputDecoration(labelText: 'Selecciona una opcion'),
+        items: [
+          DropdownMenuItem(
+            child: Text("Seleciona Valor"),
+            value: "Seleciona Valor",
+          ),
+          DropdownMenuItem(
+            child: Text('Familia'),
+            value: 'Familia',
+          ),
+          DropdownMenuItem(
+            child: Text('Amigo'),
+            value: 'Amigo',
+          ),
+          DropdownMenuItem(
+            child: Text('Conocido'),
+            value: 'Conocido',
+          ),
+        ],
         onChanged: onChangedParentesco,
+        value: parentesco,
       );
-
   Widget buildCorreo() => TextFormField(
         maxLines: 1,
         initialValue: correo,
@@ -141,5 +151,24 @@ class ContactosFormWidget extends StatelessWidget {
             ? 'El telefono no debe estar vacio'
             : null,
         onChanged: onChangedTelefono,
+      );
+
+  Widget buildDireccion() => TextFormField(
+        maxLines: 1,
+        initialValue: direccion,
+        style: TextStyle(
+          color: Colors.white70,
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Ingrese su direccion',
+          hintStyle: TextStyle(color: Colors.white70),
+        ),
+        validator: (direccion) => direccion != null && direccion.isEmpty
+            ? 'La direccion no debe estar vacio'
+            : null,
+        onChanged: onChangedDireccion,
       );
 }

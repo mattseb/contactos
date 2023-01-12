@@ -12,7 +12,7 @@ class ContactosDatabase {
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('notes3.db');
+    _database = await _initDB('contactos.db');
     return _database!;
   }
 
@@ -34,7 +34,8 @@ class ContactosDatabase {
       ${ContactosFields.apellidos} $textType,
       ${ContactosFields.parentesco} $textType,
       ${ContactosFields.correo} $textType,
-      ${ContactosFields.telefono} $textType
+      ${ContactosFields.telefono} $textType,
+      ${ContactosFields.direccion} $textType
       )
     ''');
   }
