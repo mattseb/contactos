@@ -62,7 +62,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.white70),
         ),
         validator: (nombres) => nombres != null && nombres.isEmpty
-            ? 'El título no debe estar bacio'
+            ? 'El nombre no debe estar vacio'
             : null,
         onChanged: onChangedNombres,
       );
@@ -81,7 +81,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.white70),
         ),
         validator: (apellidos) => apellidos != null && apellidos.isEmpty
-            ? 'El apellido no debe estar bacio'
+            ? 'El apellido no debe estar vacio'
             : null,
         onChanged: onChangedApellidos,
       );
@@ -100,7 +100,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.white70),
         ),
         validator: (parentesco) => parentesco != null && parentesco.isEmpty
-            ? 'El parentesco no debe estar bacio'
+            ? 'El parentesco no debe estar vacio'
             : null,
         onChanged: onChangedParentesco,
       );
@@ -119,7 +119,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.white70),
         ),
         validator: (correo) => correo != null && correo.isEmpty
-            ? 'El correo no debe estar bacio'
+            ? 'El correo no debe estar vacio'
             : null,
         onChanged: onChangedCorreo,
       );
