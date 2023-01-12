@@ -93,7 +93,9 @@ class ContactosFormWidget extends StatelessWidget {
       );
 
   Widget buildParentesco() => DropdownButtonFormField<String>(
-        decoration: InputDecoration(labelText: 'Selecciona una opcion'),
+        icon: Icon(Icons.people),
+        style: TextStyle(color: Colors.green),
+        decoration: InputDecoration(labelText: 'Selecciona el parentesco'),
         items: [
           DropdownMenuItem(
             child: Text("Seleciona Valor"),

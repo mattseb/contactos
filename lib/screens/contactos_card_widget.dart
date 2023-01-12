@@ -14,23 +14,6 @@ class ContactosCardWidget extends StatelessWidget {
 
   final Contactos contacto;
   final int index;
-  // return GestureDetector(
-  //   onTap: () async {
-  //     await Navigator.of(context).push(MaterialPageRoute(
-  //       builder: (context) => NoteDetailPage(noteId: note.id!),
-  //     ));
-
-  //     refreshNotes();
-  //   },
-  //   child: NoteCardWidget(note: note, index: index),
-  // );
-  //  onTap: () async {
-  //    await Navigator.of(context).push(MaterialPageRoute(
-  //      builder: (context) => NoteDetailPage(noteId: note.id!),
-  //    ));
-  //    }
-
-  //     refreshNotes();
   @override
   Widget build(BuildContext context) {
     /// Pick colors from the accent colors based on index
@@ -43,17 +26,18 @@ class ContactosCardWidget extends StatelessWidget {
           ));
         },
         child: ListTile(
-          leading: Icon(Icons.person),
-          trailing: Text(contacto.parentesco),
-          title: Text(
-              contacto.nombres +
-                  " " +
-                  contacto.apellidos +
-                  " Dir: " +
-                  contacto.direccion,
+          leading: Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+          trailing: Text(
+            contacto.parentesco,
+            style: TextStyle(color: Colors.white),
+          ),
+          title: Text(contacto.nombres + " " + contacto.apellidos,
               style: TextStyle(color: Colors.white)),
           subtitle: Text(
-            "Telefono: " + contacto.telefono + " * email: " + contacto.correo,
+            "Telefono: " + contacto.telefono,
             style: TextStyle(color: Colors.white),
           ),
         ),

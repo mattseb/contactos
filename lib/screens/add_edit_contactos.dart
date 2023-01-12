@@ -64,10 +64,6 @@ class _AddEditContactosState extends State<AddEditContactos> {
         ),
       );
 
-  // void Function(String?) onChangedParentescoWithNull = (String? parentesco) {
-  //   setState(() => this.parentesco = parentesco ?? "");
-  // };
-
   Widget buildButton() {
     final isFormValid = nombres.isNotEmpty &&
         apellidos.isNotEmpty &&

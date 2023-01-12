@@ -39,60 +39,100 @@ class _ContactoDetailState extends State<ContactoDetail> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          actions: [editButton(), deleteButton()],
+          title: Text("Datos del contacto"),
         ),
         body: isLoading
             ? Center(child: CircularProgressIndicator())
             : Padding(
                 padding: EdgeInsets.all(12),
-                child: ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  children: [
-                    Text(
-                      contacto.nombres,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: Container(
+                  height: 300,
+                  color: Colors.green,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                      children: [
+                        Text(
+                          contacto.nombres + " " + contacto.apellidos,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 25),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              contacto.parentesco,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 25),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              contacto.telefono,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 25),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.email,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              contacto.correo,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 25),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.house,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              contacto.direccion,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      contacto.apellidos,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      contacto.parentesco,
-                      style: TextStyle(color: Colors.white70, fontSize: 18),
-                    )
-                  ],
+                  ),
                 ),
               ),
-      );
-
-  Widget editButton() => IconButton(
-      icon: Icon(Icons.edit_outlined),
-      onPressed: () async {
-        if (isLoading) return;
-
-        await Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AddEditContactos(contacto: contacto),
-        ));
-
-        refreshNote();
-      });
-
-  Widget deleteButton() => IconButton(
-        icon: Icon(Icons.delete),
-        onPressed: () async {
-          await ContactosDatabase.instance.delete(widget.contactoId);
-
-          Navigator.of(context).pop();
-        },
       );
 }
