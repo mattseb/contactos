@@ -140,6 +140,6 @@ class ContactosFormWidget extends StatelessWidget {
         validator: (telefono) => telefono != null && telefono.isEmpty
             ? 'El telefono no debe estar vacio'
             : null,
-        onChanged: onChangedCorreo,
+        onChanged: onChangedTelefono,
       );
 }
