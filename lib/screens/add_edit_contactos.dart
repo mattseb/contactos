@@ -84,7 +84,7 @@ class _AddEditContactosState extends State<AddEditContactos> {
       if (isUpdating) {
         await updateContacto();
       } else {
-        await addNote();
+        await addContactos();
       }
 
       Navigator.of(context).pop();
@@ -103,7 +103,7 @@ class _AddEditContactosState extends State<AddEditContactos> {
     await ContactosDatabase.instance.update(note);
   }
 
-  Future addNote() async {
+  Future addContactos() async {
     final contacto = Contactos(
       nombres: nombres,
       apellidos: apellidos,

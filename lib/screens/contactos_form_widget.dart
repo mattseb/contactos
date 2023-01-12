@@ -61,7 +61,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintText: 'Ingrese sus nombres',
           hintStyle: TextStyle(color: Colors.white70),
         ),
-        validator: (title) => nombres != null && nombres.isEmpty
+        validator: (nombres) => nombres != null && nombres.isEmpty
             ? 'El título no debe estar bacio'
             : null,
         onChanged: onChangedNombres,
@@ -80,7 +80,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintText: 'Ingrese sus apellidos',
           hintStyle: TextStyle(color: Colors.white70),
         ),
-        validator: (apellidos) => apellidos != null && nombres.isEmpty
+        validator: (apellidos) => apellidos != null && apellidos.isEmpty
             ? 'El apellido no debe estar bacio'
             : null,
         onChanged: onChangedApellidos,
@@ -99,7 +99,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintText: 'Ingrese su parentesco',
           hintStyle: TextStyle(color: Colors.white70),
         ),
-        validator: (apellidos) => parentesco != null && parentesco.isEmpty
+        validator: (parentesco) => parentesco != null && parentesco.isEmpty
             ? 'El parentesco no debe estar bacio'
             : null,
         onChanged: onChangedParentesco,
@@ -118,7 +118,7 @@ class ContactosFormWidget extends StatelessWidget {
           hintText: 'Ingrese su correo',
           hintStyle: TextStyle(color: Colors.white70),
         ),
-        validator: (apellidos) => correo != null && correo.isEmpty
+        validator: (correo) => correo != null && correo.isEmpty
             ? 'El correo no debe estar bacio'
             : null,
         onChanged: onChangedCorreo,
